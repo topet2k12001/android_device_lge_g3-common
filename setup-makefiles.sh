@@ -64,9 +64,10 @@ done
 # Pick up overlay for features that depend on non-open-source files
 
 PRODUCT_PACKAGES += \\
-    btmultisim  \\
+    btmultisim \\
     btmultisimlibrary \\
-    com.lge.shutdownmonitor
+    com.broadcom.bt \\
+    com.broadcom.fm
 
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF
@@ -110,19 +111,11 @@ LOCAL_PATH := \$(call my-dir)
 
 ifneq (\$(filter d856,\$(TARGET_DEVICE)),)
 
-include \$(CLEAR_VARS)
-LOCAL_MODULE := com.lge.shutdownmonitor
-LOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := proprietary/app/com.lge.shutdownmonitor.apk
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
-LOCAL_MODULE_CLASS := APPS
-LOCAL_CERTIFICATE := platform
-include \$(BUILD_PREBUILT)
+LOCAL_PATH := \$(call my-dir)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := btmultisim
-LOCAL_MODULE_OWNER := $VENDOR
+LOCAL_MODULE_OWNER := lge
 LOCAL_SRC_FILES := proprietary/app/btmultisim.apk
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
@@ -132,8 +125,28 @@ include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := btmultisimlibrary
-LOCAL_MODULE_OWNER := $VENDOR
+LOCAL_MODULE_OWNER := lge
 LOCAL_SRC_FILES := proprietary/framework/btmultisimlibrary.jar
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)
+LOCAL_MODULE_CLASS := JAVA_LIBRARIES
+LOCAL_CERTIFICATE := PRESIGNED
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := com.broadcom.bt
+LOCAL_MODULE_OWNER := lge
+LOCAL_SRC_FILES := proprietary/framework/com.broadcom.bt.jar
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)
+LOCAL_MODULE_CLASS := JAVA_LIBRARIES
+LOCAL_CERTIFICATE := PRESIGNED
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := com.broadcom.fm
+LOCAL_MODULE_OWNER := lge
+LOCAL_SRC_FILES := proprietary/framework/com.broadcom.fm.jar
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)
 LOCAL_MODULE_CLASS := JAVA_LIBRARIES
