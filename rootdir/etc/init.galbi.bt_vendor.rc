@@ -51,9 +51,8 @@ on boot
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
-    # Feature chip vendor : qct
-    setprop bluetooth.chip.vendor qcom
-
+    # Feature chip vendor : brcm
+    setprop bluetooth.chip.vendor brcm
 
 
 service config_bluetooth /system/bin/sh /system/etc/init.galbi.bt.sh "onboot"
@@ -95,4 +94,3 @@ service btwlancoex /system/bin/sh /system/etc/init.galbi.coex.sh
     group bluetooth net_bt_admin inet net_admin net_raw
     disabled
     oneshot
-
