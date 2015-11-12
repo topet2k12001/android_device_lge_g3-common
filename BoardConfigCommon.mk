@@ -105,6 +105,7 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 BOARD_SUPPRESS_EMMC_WIPE := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
+COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 
@@ -140,7 +141,7 @@ BOARD_SEPOLICY_UNION += \
     sysinit.te \
     system_app.te \
     tee.te \
-    thermal-engine.te \
+    thermanager.te \
     vibe_data_file.te \
     ueventd.te \
     vold.te \

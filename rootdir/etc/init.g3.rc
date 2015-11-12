@@ -78,6 +78,8 @@ on fs
     chown system system /sys/bus/i2c/devices/0-0036/lm3697_rt_mode
 
 on post-fs
+    # export LD_PRELOAD /vendor/lib/libNimsWrap.so
+
     start sreadahead
     chown system lgkeyguard /sys/devices/virtual/input/lge_touch/keyguard
     chmod 664 /sys/devices/virtual/input/lge_touch/keyguard
@@ -935,13 +937,11 @@ service svelteoff /system/bin/logwrapper /system/bin/sh /system/etc/init.lge.sve
 	disabled
 	oneshot
 
-service thermal-engine /system/bin/thermal-engine -c /system/etc/thermal-engine-8974.conf
-   class main
-   user root
-   group root
-   socket thermal-send-client stream 0666 system system
-   socket thermal-recv-client stream 0660 system system
-   socket thermal-recv-passive-client stream 0666 system system
+#OSS thermal management
+service thermanager /system/bin/thermanager /system/etc/thermanager.xml
+    class late_start
+    user root
+    group root
 
 service time_daemon /system/bin/time_daemon
    class late_start

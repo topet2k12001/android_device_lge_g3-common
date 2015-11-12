@@ -60,11 +60,6 @@ if [ -f /system/etc/init.galbi.mdm_links.sh ]; then
   /system/bin/sh /system/etc/init.galbi.mdm_links.sh
 fi
 
-# Run thermal script
-if [ -f /system/etc/init.galbi.thermal_conf.sh ]; then
-  /system/bin/sh /system/etc/init.galbi.thermal_conf.sh
-fi
-
 # Run wifi script
 if [ -f /system/etc/init.galbi.wifi.sh ]; then
   /system/bin/sh /system/etc/init.galbi.wifi.sh "$target" "$serial"
@@ -87,5 +82,3 @@ if $mount_needed ;then
 # remount system as read-only.
   mount -o ro,remount,barrier=1 /system
 fi
-
-
