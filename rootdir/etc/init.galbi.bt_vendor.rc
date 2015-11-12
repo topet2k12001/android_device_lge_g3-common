@@ -54,6 +54,9 @@ on boot
     # Feature chip vendor : brcm
     setprop bluetooth.chip.vendor brcm
 
+    # For BCM FM Radio
+    setprop ro.fm.module BCM
+
 
 service config_bluetooth /system/bin/sh /system/etc/init.galbi.bt.sh "onboot"
     class core
