@@ -159,6 +159,7 @@
                    sampleRate="48000"
                    channels="2" />
         </EncoderProfile>
+
         <EncoderProfile quality="fwvga" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="30000000"

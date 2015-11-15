@@ -82,5 +82,3 @@ if $mount_needed ;then
 # remount system as read-only.
   mount -o ro,remount,barrier=1 /system
 fi
-
-
