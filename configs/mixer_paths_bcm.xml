@@ -60,6 +60,8 @@
     <ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia3" value="0" />
     <ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia5" value="0" />
+    <!-- Voice BTSCO -->
+    <ctl name="Internal BTSCO SampleRate" value="8000" />
     <ctl name="AUX_PCM_RX Audio Mixer MultiMedia5" value="0" />
     <ctl name="AUX_PCM_RX_Voice Mixer CSVoice" value="0" />
     <ctl name="SEC_AUX_PCM_RX_Voice Mixer CSVoice" value="0" />
@@ -144,7 +146,7 @@
     <ctl name="AIF1_CAP Mixer SLIM TX7" value="0" />
     <ctl name="AIF1_CAP Mixer SLIM TX8" value="0"/>
     <ctl name="CLASS_H_DSM MUX" value="ZERO" />
-   <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="0" />
+    <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="HDMI Mixer MultiMedia4" value="0" />
@@ -371,6 +373,11 @@
 
     <path name="low-latency-playback transmission-fm">
         <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia5" value="1" />
+    </path>
+
+    <path name="low-latency-playback bt-sco-and-speaker">
+        <path name="low-latency-playback bt-sco" />
+        <path name="low-latency-playback" />
     </path>
 
     <path name="multi-channel-playback hdmi">
@@ -626,6 +633,38 @@
 
     <path name="incall-rec-uplink-and-downlink-compress usb-headset-mic">
         <path name="incall-rec-uplink-and-downlink-compress" />
+    </path>
+
+    <path name="incall_music_uplink">
+       <ctl name="Incall_Music Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="incall_music_uplink bt-sco">
+       <ctl name="Incall_Music Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="incall_music_uplink bt-sco-wb">
+       <ctl name="Incall_Music Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="incall_music_uplink usb-headphones">
+       <ctl name="Incall_Music Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="incall_music_uplink2">
+        <ctl name="Incall_Music_2 Audio Mixer MultiMedia9" value="1" />
+    </path>
+
+    <path name="incall_music_uplink2 bt-sco">
+        <ctl name="Incall_Music_2 Audio Mixer MultiMedia9" value="1" />
+    </path>
+
+    <path name="incall_music_uplink2 bt-sco-wb">
+        <ctl name="Incall_Music_2 Audio Mixer MultiMedia9" value="1" />
+    </path>
+
+    <path name="incall_music_uplink2 usb-headphones">
+        <ctl name="Incall_Music_2 Audio Mixer MultiMedia9" value="1" />
     </path>
 
     <path name="volte-call">
