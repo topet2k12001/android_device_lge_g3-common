@@ -224,15 +224,12 @@ done
 # Pick up overlay for features that depend on non-open-source files
 
 PRODUCT_PACKAGES += \\
-    com.qualcomm.location \\
-    qcrilmsgtunnel \\
     TimeService \\
+    qcrilmsgtunnel \\
+    shutdownlistener \\
     qcnvitems \\
     qcrilhook \\
-    libHevcSwDecoder \\
-    libtime_genoff \\
-    shutdownlistener \\
-    com.qualcomm.services.location
+    libtime_genoff
 
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF
@@ -274,40 +271,15 @@ EOF
 
 LOCAL_PATH := \$(call my-dir)
 
-ifneq (\$(filter g3 d850 d851 d852 d855 ls990 vs985 f400,\$(TARGET_DEVICE)),)
-
-include \$(CLEAR_VARS)
-LOCAL_MODULE := com.qualcomm.services.location
-LOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := proprietary/app/com.qualcomm.services.location.apk
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
-LOCAL_MODULE_CLASS := APPS
-LOCAL_CERTIFICATE := platform
-include \$(BUILD_PREBUILT)
-
-include \$(CLEAR_VARS)
-LOCAL_MODULE := shutdownlistener
-LOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := proprietary/app/shutdownlistener.apk
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
-LOCAL_MODULE_CLASS := APPS
-LOCAL_CERTIFICATE := platform
-include \$(BUILD_PREBUILT)
-
-endif
-
 ifneq (\$(filter g3 d850 d851 d852 d855 d856 ls990 vs985 f400,\$(TARGET_DEVICE)),)
 
 include \$(CLEAR_VARS)
-LOCAL_MODULE := com.qualcomm.location
+LOCAL_MODULE := TimeService
 LOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := proprietary/priv-app/com.qualcomm.location.apk
+LOCAL_SRC_FILES := proprietary/app/TimeService.apk
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
 LOCAL_MODULE_CLASS := APPS
-LOCAL_PRIVILEGED_MODULE := true
 LOCAL_CERTIFICATE := platform
 include \$(BUILD_PREBUILT)
 
@@ -322,9 +294,9 @@ LOCAL_CERTIFICATE := platform
 include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
-LOCAL_MODULE := TimeService
+LOCAL_MODULE := shutdownlistener
 LOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := proprietary/app/TimeService.apk
+LOCAL_SRC_FILES := proprietary/app/shutdownlistener.apk
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
 LOCAL_MODULE_CLASS := APPS
@@ -349,16 +321,6 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)
 LOCAL_MODULE_CLASS := JAVA_LIBRARIES
 LOCAL_CERTIFICATE := PRESIGNED
-include \$(BUILD_PREBUILT)
-
-include \$(CLEAR_VARS)
-LOCAL_MODULE := libHevcSwDecoder
-LOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := proprietary/vendor/lib/libHevcSwDecoder.so
-LOCAL_MODULE_PATH := \$(TARGET_OUT_VENDOR_SHARED_LIBRARIES)
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_SUFFIX := .so
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
