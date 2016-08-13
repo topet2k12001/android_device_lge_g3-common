@@ -109,7 +109,7 @@ EOF
 
 LOCAL_PATH := \$(call my-dir)
 
-ifneq (\$(filter d856,\$(TARGET_DEVICE)),)
+ifneq (\$(filter d856 d857 d858 d858hk d859,\$(TARGET_DEVICE)),)
 
 LOCAL_PATH := \$(call my-dir)
 
@@ -298,7 +298,7 @@ include \$(BUILD_PREBUILT)
 
 endif
 
-ifneq (\$(filter g3 d850 d851 d852 d855 d856 ls990 vs985 f400,\$(TARGET_DEVICE)),)
+ifneq (\$(filter g3 d850 d851 d852 d855 d856 d857 d858 d858hk d859 ls990 vs985 f400,\$(TARGET_DEVICE)),)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := com.qualcomm.location
